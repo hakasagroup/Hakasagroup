@@ -1,0 +1,90 @@
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+function countWords(html) {
+  return html.replace(/<[^>]*>/g, ' ').replace(/&[^;]+;/g, ' ').trim().split(/\s+/).filter(Boolean).length;
+}
+
+async function main() {
+  console.log("Menyuntikkan Artikel 5 dan 6 (Premium HKI & E-Commerce) ke database...");
+
+  const articles = [
+    {
+      title: "Badai Takedown Seller TikTok Shop & Shopee di 2026: Mengapa Sertifikat Merek Kini Jadi Syarat Mutlak Bertahan di E-Commerce",
+      slug: "badai-takedown-seller-tiktok-shop-shopee-sertifikat-merek-2026",
+      category: "Merek",
+      image: "",
+      excerpt: "Kebijakan perlindungan HKI dari algoritma E-Commerce di tahun 2026 semakin agresif. Ratusan seller kehilangan akses tokonya secara mendadak akibat tidak memiliki sertifikat merek DJKI saat dilaporkan oleh kompetitor.",
+      metaDesc: "Berita E-Commerce 2026: Analisis gelombang takedown dan penutupan toko di TikTok Shop dan Shopee akibat pelanggaran HKI. Solusi wajib daftar merek DJKI untuk seller online.",
+      keywords: "takedown tiktok shop 2026, shopee brand protection, pelanggaran hki e-commerce, syarat shopee mall, daftar merek jualan online, sengketa merek seller, perlindungan merek omnichannel",
+      isPublished: true,
+      content: `
+        <p><strong>JAKARTA, HAKASA Group</strong> – Lanskap perdagangan digital Indonesia pada pertengahan 2026 mengalami guncangan regulasi yang signifikan. Platform <em>e-commerce</em> seperti Shopee, TikTok Shop, dan Tokopedia memperketat kebijakan perlindungan Kekayaan Intelektual (KI). Dampaknya dirasakan penjual (<em>seller</em>) skala UMKM hingga menengah melalui pembekuan lapak, penahanan dana, penghapusan katalog, bahkan penutupan akun. Salah satu dokumen yang semakin menentukan adalah bukti kepemilikan merek dari Direktorat Jenderal Kekayaan Intelektual (DJKI).</p>
+        <p>Fenomena yang disebut pelaku <em>omnichannel</em> sebagai "Badai Takedown 2026" menjadi peringatan bagi ekosistem bisnis digital. Era ketika pelaku usaha dapat mengimpor produk generik, menempelkan nama acak, lalu membangun reputasi tanpa pemeriksaan legalitas telah berubah. Platform berusaha mengurangi risiko gugatan dengan memprioritaskan pemegang hak yang dapat menunjukkan dasar kepemilikan. Namun, perlu dipahami bahwa prosedur internal platform bukanlah putusan pengadilan dan setiap seller tetap memiliki kesempatan mengajukan sanggahan sesuai mekanisme yang tersedia.</p>
+        <h3>Pergeseran Kebijakan Brand Protection Platform</h3>
+        <p>Fitur seperti <em>Shopee Brand Protection</em> dan <em>TikTok Shop Intellectual Property Protection</em> dahulu lebih banyak bekerja setelah laporan pemilik merek diterima. Kini proses pelaporan dipadukan dengan pencocokan gambar, pemindaian kata kunci, dan pemeriksaan katalog. Teknologi dapat menandai kemiripan logo, nama produk, atau foto kemasan, sedangkan keputusan pembatasan biasanya tetap mengikuti kebijakan dan dokumen yang diserahkan para pihak.</p>
+        <p>Ketika penjual B mengunggah sertifikat mereknya ke portal perlindungan, platform dapat memeriksa katalog penjual lain. Apabila penjual A menggunakan nama atau logo yang serupa tanpa otorisasi, listing dapat diturunkan sementara. Situasi ini dapat terjadi walaupun A lebih dahulu berjualan di platform. Dalam sistem <em>first to file</em>, penggunaan komersial saja tidak selalu memberikan hak eksklusif sebagaimana pendaftaran yang sah, sehingga tanggal pengajuan dan status merek menjadi sangat penting.</p>
+        <h3>Ancaman Laten bagi Manajemen Omnichannel</h3>
+        <p>Pelaku usaha yang memakai perangkat lunak <em>omnichannel</em> untuk menyinkronkan stok menghadapi risiko berlipat. Teguran HKI pada satu kanal dapat menurunkan skor performa, membatasi visibilitas, dan mengganggu promosi. Jika kanal utama ditutup mendadak, inventaris di gudang berubah menjadi <em>dead stock</em>, pesanan tertunda, serta arus kas terganggu. Karena itu, audit merek harus dipandang sebagai bagian dari manajemen risiko rantai pasok, bukan hanya urusan administratif.</p>
+        <p>Risiko lain adalah pendaftaran nama toko oleh pihak yang beriktikad tidak baik. Oknum dapat memantau toko yang sudah populer tetapi belum mendaftarkan namanya, lalu mengajukan permohonan terlebih dahulu. Setelah memperoleh dokumen tertentu, oknum melaporkan pemilik asli ke platform dan menuntut pembayaran. Peristiwa demikian tidak otomatis membuat klaim oknum benar, tetapi dapat memaksa pemilik asli mengeluarkan biaya dan waktu untuk mengumpulkan bukti penggunaan, mengajukan keberatan, serta memulihkan akses toko.</p>
+        <h3>Sertifikat Merek dan Akses Ekosistem Premium</h3>
+        <p>Selain sebagai instrumen pertahanan, sertifikat merek menjadi salah satu dokumen penting untuk peningkatan status penjual menuju ekosistem seperti <strong>Shopee Mall</strong>, <strong>Tokopedia Official Store</strong>, atau program resmi platform lainnya. Setiap platform memiliki syarat dan nomenklatur berbeda; sebagian menerima sertifikat, sebagian menerima bukti permohonan atau surat otorisasi distributor. Seller tidak boleh menganggap semua platform memiliki standar identik.</p>
+        <p>Legalitas yang rapi memperkuat kepercayaan konsumen, memudahkan pengelolaan distributor, dan membantu platform memverifikasi siapa pemilik brand yang sah. Sertifikat bukan jaminan absolut bahwa toko tidak pernah ditakedown, tetapi merupakan bukti penting saat mengajukan klarifikasi dan menanggapi klaim pihak ketiga. Seller juga perlu memastikan nama pemilik, kelas barang, alamat, dan dokumen korporasi konsisten.</p>
+        <h3>Mitigasi Krisis bagi Seller</h3>
+        <ol><li><strong>Audit merek internal:</strong> Periksa nama toko, nama produk, logo, dan kemasan pada basis data PDKI. Pemeriksaan harus mencakup variasi ejaan, bunyi, kelas terkait, serta status permohonan.</li><li><strong>Pendaftaran proaktif:</strong> Jika nama masih tersedia, ajukan permohonan sesegera mungkin. Asas <em>first to file</em> membuat tanggal penerimaan menjadi faktor strategis, meskipun permohonan tetap melalui pemeriksaan substantif.</li><li><strong>Siapkan berkas pembuktian:</strong> Simpan invoice, kontrak, iklan, tangkapan layar toko, data penjualan, desain kemasan, dan bukti tanggal penggunaan secara teratur.</li><li><strong>Gunakan mekanisme counter-notice:</strong> Jika terjadi <em>takedown</em>, baca alasan pelaporan, ajukan sanggahan melalui kanal resmi, lampirkan bukti hak, dan hindari mengirim dokumen sensitif ke pihak yang tidak terverifikasi.</li><li><strong>Tempuh upaya hukum:</strong> Oposisi, tanggapan pemeriksaan, pembatalan, atau gugatan dapat dipertimbangkan bersama konsultan KI berdasarkan tahap dan dasar hukum kasus.</li></ol>
+        <p>Dalam praktik, seller juga perlu membuat protokol respons insiden. Tunjuk satu orang yang bertanggung jawab menerima notifikasi, catat waktu pembatasan, simpan salinan halaman yang diturunkan, dan bedakan antara klaim hak cipta atas foto, klaim merek atas nama, serta klaim desain atas kemasan. Setiap jenis hak memiliki dokumen pembuktian dan jalur keberatan yang berbeda. Jangan menghapus arsip transaksi ketika panik, karena data tersebut dapat menunjukkan riwayat penggunaan dan membantu rekonsiliasi dengan distributor.</p>
+        <p>Seller yang menjual barang pihak lain harus meminta surat otorisasi, faktur rantai pasok, dan bukti bahwa distributornya memperoleh barang secara sah. Distributor tidak otomatis berwenang memakai logo atau mengubah foto promosi. Perjanjian tertulis sebaiknya mengatur penggunaan merek, wilayah distribusi, standar kemasan, tanggung jawab atas klaim, serta prosedur penghentian penjualan. Dengan demikian, kepatuhan tidak berhenti pada pendaftaran merek, tetapi menjadi bagian dari tata kelola perdagangan digital.</p>
+        <h3>Kesimpulan</h3>
+        <p>Tahun 2026 menunjukkan bahwa hukum KI dan tata kelola platform digital semakin berkelindan. Mengabaikan pendaftaran merek sama dengan membangun aset omzet yang rapuh: penjualan dapat tumbuh, tetapi akses pelanggan dapat terganggu oleh satu laporan. Investasi pendaftaran, audit, dan dokumentasi jauh lebih kecil dibandingkan biaya rebranding, penarikan produk, serta kehilangan reputasi.</p>
+        <p>HAKASA Group membantu pemilik brand memetakan risiko merek, menyiapkan pendaftaran, dan menyusun respons terhadap klaim platform secara tertib. Perlindungan terbaik bukan hanya sertifikat, melainkan strategi yang menggabungkan legalitas, bukti penggunaan, pengawasan marketplace, dan kesiapan menghadapi sengketa.</p>
+        <hr><h4>Daftar Pustaka &amp; Referensi Regulasi</h4>
+        <ul><li>Shopee Indonesia. <em>Intellectual Property Protection dan Ketentuan Shopee Mall</em>. Portal Edukasi Penjual Shopee.</li><li>TikTok Shop. <em>Intellectual Property Policy and Enforcement Guidelines</em>. Seller Center.</li><li>Undang-Undang Nomor 20 Tahun 2016 tentang Merek dan Indikasi Geografis.</li><li>Peraturan Menteri Hukum dan HAM Nomor 67 Tahun 2016 tentang Pendaftaran Merek.</li><li>Sutedi, A. (2023). <em>Hak Kekayaan Intelektual</em>. Jakarta: Sinar Grafika.</li><li>WIPO. <em>Enforcement of Intellectual Property Rights</em>. World Intellectual Property Organization.</li></ul>
+      `
+    },
+    {
+      title: "Menerima Surat Usulan Penolakan Merek dari DJKI? Jangan Panik, Ini Strategi Hukum Menyusun Sanggahan (Hearing) yang Tepat",
+      slug: "strategi-hukum-sanggahan-hearing-usulan-penolakan-merek-djki",
+      category: "Merek",
+      image: "",
+      excerpt: "Mendapat status 'Usulan Penolakan' dari DJKI bukanlah akhir dari segalanya. Pahami perbedaan fundamental antara penolakan Pasal 20 dan Pasal 21 UU MIG, serta prosedur hukum menyusun Sanggahan (Hearing) yang kuat.",
+      metaDesc: "Edukasi Merek DJKI: Cara membuat surat sanggahan (hearing) merek saat menerima Surat Usulan Penolakan. Bedah alasan penolakan Pasal 20 dan Pasal 21 beserta dasar hukumnya.",
+      keywords: "usulan penolakan merek djki, surat sanggahan merek, hearing merek, contoh sanggahan penolakan merek, alasan merek ditolak djki, pasal 20 pasal 21 uu merek, komisi banding merek",
+      isPublished: true,
+      content: `
+        <p><strong>JAKARTA, HAKASA Group</strong> – Salah satu momen paling mendebarkan bagi pemilik bisnis adalah ketika status permohonan di Pangkalan Data Kekayaan Intelektual (PDKI) berubah menjadi "Usulan Penolakan" (<em>provisional refusal</em>). Banyak pemohon mengira bahwa biaya telah hangus dan nama brand telah berakhir. Anggapan ini keliru. Usulan penolakan merupakan pemberitahuan dari Pemeriksa Merek mengenai alasan awal mengapa permohonan berpotensi tidak dapat didaftarkan, bukan selalu keputusan final.</p>
+        <p>Undang-Undang Nomor 20 Tahun 2016 tentang Merek dan Indikasi Geografis (UU MIG) menyediakan ruang bagi pemohon untuk menyampaikan tanggapan atau sanggahan. Kesempatan tersebut harus digunakan secara disiplin karena pemohon memiliki tenggat waktu dan harus menjawab alasan pemeriksa dengan argumen hukum serta bukti yang relevan. Sanggahan bukan surat permohonan belas kasihan, melainkan dokumen advokasi administratif yang harus menunjukkan mengapa alasan penolakan tidak tepat diterapkan pada merek yang diajukan.</p>
+        <h3>Mendiagnosis Alasan Penolakan: Absolut dan Relatif</h3>
+        <p>Langkah pertama adalah membaca seluruh surat pemberitahuan, termasuk nomor permohonan, kelas, uraian barang atau jasa, merek pembanding, dan batas waktu. Secara umum, alasan penolakan berada dalam dua kelompok:</p>
+        <p><strong>Penolakan absolut berdasarkan Pasal 20 UU MIG</strong> berkaitan dengan karakter merek itu sendiri. Merek dapat dipersoalkan karena bertentangan dengan ideologi, moralitas, agama, atau ketertiban umum; tidak memiliki daya pembeda; menjadi milik umum; hanya menyebut atau berkaitan dengan barang dan jasa; menyesatkan masyarakat; atau memuat keterangan kualitas, manfaat, fungsi, ukuran, dan asal barang secara dominan. Kata "KOPI" untuk produk kopi adalah ilustrasi sederhana unsur deskriptif.</p>
+        <p><strong>Penolakan relatif berdasarkan Pasal 21 UU MIG</strong> muncul karena adanya hak pihak lain. Pemeriksa dapat menemukan persamaan pada pokoknya atau keseluruhannya dengan merek terdaftar atau merek yang diajukan lebih dahulu pada barang atau jasa sejenis. Pasal tersebut juga mengatur persoalan nama orang terkenal, badan hukum, indikasi geografis, serta permohonan yang diajukan dengan iktikad tidak baik. Masing-masing dasar memerlukan strategi tanggapan yang berbeda.</p>
+        <h3>Anatomi Sanggahan yang Kredibel</h3>
+        <p>Pemohon harus terlebih dahulu membuat kronologi singkat dan tabel isu. Cantumkan tanggal pengajuan, kelas, daftar barang atau jasa, alasan pemeriksa, serta bukti yang tersedia. Setelah itu, jawab setiap alasan secara berurutan. Hindari argumen bahwa merek "sudah terkenal" tanpa bukti. Popularitas di media sosial dapat membantu, tetapi tidak otomatis menghapus persamaan dengan merek terdahulu atau menjadikan istilah generik eksklusif.</p>
+        <p>Untuk menepis Pasal 20, fokuskan argumentasi pada daya pembeda yang lahir dari kombinasi kata, unsur figuratif, susunan warna, tipografi, atau kata ciptaan. Bukti promosi, penjualan, distribusi, penghargaan, artikel, dan survei konsumen dapat menunjukkan <em>secondary meaning</em> apabila faktanya memadai. Namun, bukti penggunaan tidak boleh menggantikan analisis apakah unsur utama merek tetap bersifat deskriptif atau milik umum.</p>
+        <p>Untuk menepis Pasal 21, lakukan tiga uji komparasi. Pertama, uji visual: bandingkan struktur, logo, tipografi, warna, dan susunan elemen. Kedua, uji fonetik: uraikan suku kata, tekanan bunyi, dan cara konsumen Indonesia mengucapkannya. Ketiga, uji konseptual: jelaskan makna, etimologi, atau gagasan yang dikomunikasikan masing-masing merek. Analisis juga harus mempertimbangkan jenis barang, tujuan penggunaan, saluran distribusi, konsumen, serta tingkat perhatian pembeli.</p>
+        <p>Jika terdapat unsur yang bersifat umum, jelaskan bahwa perlindungan dimohonkan terhadap keseluruhan komposisi, bukan monopoli atas kata generik secara terpisah. Jangan mengakui persamaan secara tidak perlu. Sebaliknya, gunakan matriks perbandingan yang objektif dan lampirkan bukti pencarian pasar untuk memperlihatkan perbedaan impresi keseluruhan.</p>
+        <h3>Tenggat Waktu dan Pemeriksaan Lanjutan</h3>
+        <p>Perhatikan batas waktu yang tercantum dalam surat dan kanal pengajuan yang ditentukan DJKI. Ketentuan teknis dan perhitungan tenggat dapat berubah menurut sistem serta regulasi yang berlaku; karena itu, pemohon harus memeriksa surat asli dan tidak mengandalkan contoh lama di internet. Keterlambatan dapat menyebabkan sanggahan tidak dipertimbangkan dan usulan penolakan berlanjut menjadi penolakan tetap.</p>
+        <p>Apabila setelah sanggahan permohonan tetap ditolak, pemohon dapat mempelajari opsi banding kepada Komisi Banding Merek sesuai UU MIG dan batas waktu yang berlaku. Banding bukan pengulangan surat sebelumnya. Dokumen tersebut harus mengidentifikasi kekeliruan pemeriksaan, menjawab alasan keputusan, serta menyajikan bukti secara sistematis. Dalam keadaan tertentu, tersedia pula upaya hukum terhadap keputusan yang telah ditetapkan, tetapi pilihan harus dinilai dari biaya, kekuatan bukti, dan prospek komersial merek.</p>
+        <h3>Kesalahan yang Sering Terjadi</h3>
+        <p>Kesalahan umum meliputi mengajukan sanggahan setelah tenggat, hanya melampirkan screenshot tanpa keterangan, membandingkan merek berdasarkan satu unsur kecil, serta mengabaikan daftar barang dan jasa. Pemohon juga sering mengutip putusan tanpa membaca fakta perkara atau menggunakan referensi yang tidak dapat diverifikasi. Setiap yurisprudensi harus dipakai secara hati-hati karena perbedaan kelas, bentuk merek, kronologi, dan bukti dapat mengubah hasil.</p>
+        <h3>Kesimpulan</h3>
+        <p>Usulan penolakan bukan jalan buntu, tetapi kesempatan terakhir untuk menjelaskan kekuatan hukum dan daya pembeda brand sebelum keputusan final. Sanggahan yang kuat harus tepat waktu, menjawab Pasal 20 atau Pasal 21 secara spesifik, menggabungkan uji visual-fonetik-konseptual, dan didukung bukti yang dapat diverifikasi. Karena konsekuensinya terhadap investasi brand sangat besar, pendampingan Konsultan Kekayaan Intelektual Terdaftar dapat membantu pemohon menyusun strategi yang proporsional.</p>
+        <p>HAKASA Group membantu melakukan diagnosis alasan penolakan, menyusun matriks pembanding, menginventarisasi bukti, dan menyiapkan dokumen tanggapan secara terstruktur. Setiap perkara tetap memerlukan penilaian individual berdasarkan surat DJKI dan fakta pemohon; tidak ada template yang dapat menjamin pendaftaran tanpa analisis.</p>
+        <hr><h4>Daftar Pustaka &amp; Referensi Hukum</h4>
+        <ul><li>Undang-Undang Nomor 20 Tahun 2016 tentang Merek dan Indikasi Geografis.</li><li>Peraturan Menteri Hukum dan HAM Nomor 67 Tahun 2016 tentang Pendaftaran Merek.</li><li>Direktorat Jenderal Kekayaan Intelektual. <em>Modul Kekayaan Intelektual Bidang Merek</em>. Kementerian Hukum Republik Indonesia.</li><li>Saidin, OK. (2019). <em>Aspek Hukum Hak Kekayaan Intelektual</em>. Jakarta: Rajawali Pers.</li><li>Mahkamah Agung Republik Indonesia. <em>Direktori Putusan Perkara Merek</em>.</li><li>WIPO. <em>WIPO Intellectual Property Handbook: Policy, Law and Use</em>. World Intellectual Property Organization.</li></ul>
+      `
+    }
+  ];
+
+  for (const article of articles) {
+    const words = countWords(article.content);
+    if (words < 850) throw new Error(`${article.slug} hanya ${words} kata; minimal 850 kata.`);
+    await prisma.article.upsert({ where: { slug: article.slug }, update: article, create: article });
+    console.log(`Sukses menyuntikkan: ${article.title} (${words} kata)`);
+  }
+  console.log("Proses injeksi Artikel 5 dan 6 selesai!");
+}
+
+main()
+  .catch((e) => { console.error(e); process.exit(1); })
+  .finally(async () => { await prisma.$disconnect(); });
